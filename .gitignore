@@ -1,0 +1,21 @@
+# UiPath local and generated files
+.local/
+.objects/
+.entities/
+.project/
+.settings/
+.tmh/
+
+# Local input, template, and output files
+.templates/
+*.xlsx
+*.xls
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# System files
+.DS_Store
+Thumbs.db

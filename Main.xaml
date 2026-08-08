@@ -1,0 +1,785 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:ui="http://schemas.uipath.com/workflow/activities"
+  xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib"
+  xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common"
+  xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib"
+  xmlns:sdc="clr-namespace:System.Drawing;assembly=System.Drawing.Common">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.OleDb</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="dataFilePath" />
+      <Variable x:TypeArguments="x:String" Name="templatePath" />
+      <Variable x:TypeArguments="x:String" Name="posXStr" />
+      <Variable x:TypeArguments="x:String" Name="posYStr" />
+      <Variable x:TypeArguments="x:String" Name="fontSizeStr" />
+      <Variable x:TypeArguments="x:String" Name="senderEmail" />
+      <Variable x:TypeArguments="x:String" Name="senderPassword" />
+      <Variable x:TypeArguments="x:String" Name="emailSubject" />
+      <Variable x:TypeArguments="x:String" Name="emailBody" />
+      <Variable x:TypeArguments="x:String" Name="fontColorStr" />
+      <Variable x:TypeArguments="x:String" Name="fontFamily" />
+      <Variable x:TypeArguments="x:String" Name="outputFormat" />
+      <Variable x:TypeArguments="x:String" Name="emailTemplate" />
+      <Variable x:TypeArguments="x:Int32" Name="certCounter" />
+      <Variable x:TypeArguments="x:Int32" Name="progressIndex" />
+      <Variable x:TypeArguments="x:String" Name="deliveryMode" />
+      <Variable x:TypeArguments="x:Boolean" Name="sendViaEmail" />
+      <Variable x:TypeArguments="sd:DataTable" Name="participantsTable" />
+      <Variable x:TypeArguments="x:String" Name="outputFolder" />
+      <Variable x:TypeArguments="x:Boolean" Name="isPdf" />
+      <Variable x:TypeArguments="sdc:Image" Name="dummyImage" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Start" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Start">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object">"Certificate Generator started"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <ui:SelectFile DisplayName="Select Participants File" Filter="Excel/CSV files (*.xlsx;*.xls;*.csv)|*.xlsx;*.xls;*.csv|All files (*.*)|*.*" sap2010:WorkflowViewState.IdRef="SelectFile_Data">
+      <ui:SelectFile.SelectedFile>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">dataFilePath</CSharpReference>
+        </OutArgument>
+      </ui:SelectFile.SelectedFile>
+    </ui:SelectFile>
+    <ui:SelectFile DisplayName="Select Certificate Template" Filter="Image files (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg|All files (*.*)|*.*" sap2010:WorkflowViewState.IdRef="SelectFile_Template">
+      <ui:SelectFile.SelectedFile>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">templatePath</CSharpReference>
+        </OutArgument>
+      </ui:SelectFile.SelectedFile>
+    </ui:SelectFile>
+    <ui:InputDialog DisplayName="Enter X Position" Title="Certificate Generator" Label="Enter X coordinate for name placement:" sap2010:WorkflowViewState.IdRef="InputDialog_X">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">posXStr</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Enter Y Position" Title="Certificate Generator" Label="Enter Y coordinate for name placement:" sap2010:WorkflowViewState.IdRef="InputDialog_Y">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">posYStr</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Enter Font Size" Title="Certificate Generator" Label="Enter font size for the name (e.g., 48):" sap2010:WorkflowViewState.IdRef="InputDialog_Font">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">fontSizeStr</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Select Font Family" Title="Certificate Generator" Label="Enter font family (e.g., Arial, Times New Roman, Calibri, Verdana, Georgia):" sap2010:WorkflowViewState.IdRef="InputDialog_FontFamily">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">fontFamily</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Select Font Color" Title="Certificate Generator" Label="Enter font color (Black, White, Red, Blue, Gold, or any other color name):" sap2010:WorkflowViewState.IdRef="InputDialog_Color">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">fontColorStr</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <If sap2010:WorkflowViewState.IdRef="If_CustomColor">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">fontColorStr == "Other"</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Custom Color" sap2010:WorkflowViewState.IdRef="Sequence_CustomColor">
+          <ui:InputDialog DisplayName="Enter Custom Color" Title="Certificate Generator" Label="Enter custom color (e.g., Green, Purple, Orange):" sap2010:WorkflowViewState.IdRef="InputDialog_CustomColor">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String">fontColorStr</CSharpReference>
+              </OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:InputDialog DisplayName="Select Output Format" Title="Certificate Generator" Label="Enter output format (PNG or PDF):" sap2010:WorkflowViewState.IdRef="InputDialog_Format">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">outputFormat</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <If sap2010:WorkflowViewState.IdRef="If_CustomFormat">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">outputFormat == "Other"</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Custom Format" sap2010:WorkflowViewState.IdRef="Sequence_CustomFormat">
+          <ui:InputDialog DisplayName="Enter Custom Format" Title="Certificate Generator" Label="Enter custom format (PNG or PDF):" sap2010:WorkflowViewState.IdRef="InputDialog_CustomFormat">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String">outputFormat</CSharpReference>
+              </OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign DisplayName="Set IsPdf Flag" sap2010:WorkflowViewState.IdRef="Assign_IsPdf">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">
+          <CSharpReference x:TypeArguments="x:Boolean">isPdf</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">outputFormat.Trim().ToLower() == "pdf"</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InputDialog DisplayName="Choose Delivery Mode" Title="Certificate Generator" Label="Enter delivery mode (Email or Local):" sap2010:WorkflowViewState.IdRef="InputDialog_Delivery">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">deliveryMode</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <Assign DisplayName="Set SendViaEmail Flag" sap2010:WorkflowViewState.IdRef="Assign_SendViaEmail">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">
+          <CSharpReference x:TypeArguments="x:Boolean">sendViaEmail</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">deliveryMode.Trim().ToLower() == "email"</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <If sap2010:WorkflowViewState.IdRef="If_EmailConfig">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">sendViaEmail</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Email Config" sap2010:WorkflowViewState.IdRef="Sequence_EmailConfig">
+    <ui:InputDialog DisplayName="Select Email Template" Title="Certificate Generator" Label="Enter email template (Custom, Congratulations, Achievement, or Completion):" sap2010:WorkflowViewState.IdRef="InputDialog_Template">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">emailTemplate</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <If sap2010:WorkflowViewState.IdRef="If_Template">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">!emailTemplate.Trim().ToLower().Equals("custom")</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Apply Template" sap2010:WorkflowViewState.IdRef="Sequence_Template">
+          <Assign DisplayName="Set Subject from Template" sap2010:WorkflowViewState.IdRef="Assign_TemplateSubject">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String">emailSubject</CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String">emailTemplate.Trim().ToLower().Equals("congratulations") ? "Congratulations on Your Achievement!" : emailTemplate.Trim().ToLower().Equals("achievement") ? "Your Achievement Certificate" : "Certificate of Completion"</CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Set Body from Template" sap2010:WorkflowViewState.IdRef="Assign_TemplateBody">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String">emailBody</CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String">emailTemplate.Trim().ToLower().Equals("congratulations") ? "Dear Participant,\n\nCongratulations! We are pleased to present you with this certificate.\n\nBest regards" : emailTemplate.Trim().ToLower().Equals("achievement") ? "Dear Participant,\n\nWe recognize your outstanding achievement. Please find your certificate attached.\n\nBest regards" : "Dear Participant,\n\nYou have successfully completed the program. Your certificate is attached.\n\nBest regards"</CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:InputDialog DisplayName="Enter Your Gmail" Title="Certificate Generator" Label="Enter your Gmail address (sender):" sap2010:WorkflowViewState.IdRef="InputDialog_SenderEmail">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">senderEmail</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Enter Gmail App Password" Title="Certificate Generator" Label="Enter your Gmail App Password:" IsPassword="True" sap2010:WorkflowViewState.IdRef="InputDialog_SenderPassword">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">senderPassword</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <If sap2010:WorkflowViewState.IdRef="If_CustomSubjectBody">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">emailTemplate.Trim().ToLower().Equals("custom")</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Custom Subject and Body" sap2010:WorkflowViewState.IdRef="Sequence_CustomSubjectBody">
+    <ui:InputDialog DisplayName="Enter Email Subject" Title="Certificate Generator" Label="Enter the email subject:" sap2010:WorkflowViewState.IdRef="InputDialog_Subject">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">emailSubject</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog DisplayName="Enter Email Body" Title="Certificate Generator" Label="Enter the email description/body:" sap2010:WorkflowViewState.IdRef="InputDialog_Body">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">emailBody</CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+        </Sequence>
+      </If.Then>
+    </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Local Mode" sap2010:WorkflowViewState.IdRef="Sequence_LocalMode">
+          <ui:LogMessage DisplayName="Log Local Mode" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_LocalMode">
+            <ui:LogMessage.Message>
+              <InArgument x:TypeArguments="x:Object">
+                <CSharpValue x:TypeArguments="x:Object">"Local mode selected — certificates will be saved to output folder only."</CSharpValue>
+              </InArgument>
+            </ui:LogMessage.Message>
+          </ui:LogMessage>
+        </Sequence>
+      </If.Else>
+    </If>
+    <Assign DisplayName="Set Output Folder" sap2010:WorkflowViewState.IdRef="Assign_Folder">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String">outputFolder</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String">System.IO.Path.GetDirectoryName(templatePath)</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeCode Language="CSharp" DisplayName="Read Participants File" sap2010:WorkflowViewState.IdRef="InvokeCode_ReadData">
+      <ui:InvokeCode.Code>
+        <x:String xml:space="preserve">System.Data.DataTable dt = new System.Data.DataTable();
+dt.Columns.Add("Name", typeof(string));
+dt.Columns.Add("Email", typeof(string));
+string ext = System.IO.Path.GetExtension(filePathVar).ToLower();
+if (ext == ".csv")
+{
+    string[] lines = System.IO.File.ReadAllLines(filePathVar);
+    for (int i = 1; i &lt; lines.Length; i++)
+    {
+        string[] parts = lines[i].Split(',');
+        if (parts.Length &gt;= 2)
+        {
+            System.Data.DataRow row = dt.NewRow();
+            row["Name"] = parts[0].Trim();
+            row["Email"] = parts[1].Trim();
+            dt.Rows.Add(row);
+        }
+    }
+}
+else
+{
+    string conn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePathVar + ";Extended Properties='Excel 12.0 Xml;HDR=YES;'";
+    if (ext == ".xls")
+        conn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePathVar + ";Extended Properties='Excel 8.0;HDR=YES;'";
+    using (System.Data.OleDb.OleDbConnection c = new System.Data.OleDb.OleDbConnection(conn))
+    {
+        c.Open();
+        System.Data.DataTable schema = c.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, null);
+        string sheetName = schema.Rows[0]["TABLE_NAME"].ToString();
+        using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand("SELECT * FROM [" + sheetName + "]", c))
+        {
+            using (System.Data.OleDb.OleDbDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    System.Data.DataRow row = dt.NewRow();
+                    row["Name"] = rdr.GetValue(0).ToString();
+                    row["Email"] = rdr.GetValue(1).ToString();
+                    dt.Rows.Add(row);
+                }
+            }
+        }
+    }
+}
+tableVar = dt;</x:String>
+      </ui:InvokeCode.Code>
+      <ui:InvokeCode.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument">
+          <InArgument x:TypeArguments="x:String" x:Key="filePathVar">
+            <CSharpValue x:TypeArguments="x:String">dataFilePath</CSharpValue>
+          </InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="tableVar">
+            <CSharpReference x:TypeArguments="sd:DataTable">participantsTable</CSharpReference>
+          </OutArgument>
+        </scg:Dictionary>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Count" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Count">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object">"Found " + participantsTable.Rows.Count + " participants"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <Assign DisplayName="Init Certificate Counter" sap2010:WorkflowViewState.IdRef="Assign_CertCounter">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">
+          <CSharpReference x:TypeArguments="x:Int32">certCounter</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">
+          <CSharpValue x:TypeArguments="x:Int32">1</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Init Progress Index" sap2010:WorkflowViewState.IdRef="Assign_ProgressIndex">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">
+          <CSharpReference x:TypeArguments="x:Int32">progressIndex</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">
+          <CSharpValue x:TypeArguments="x:Int32">0</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="sd:DataRow" DisplayName="For Each Participant" sap2010:WorkflowViewState.IdRef="ForEach_1">
+      <ui:ForEach.Values>
+        <InArgument x:TypeArguments="sc:IEnumerable">
+          <CSharpValue x:TypeArguments="sc:IEnumerable">participantsTable.Rows</CSharpValue>
+        </InArgument>
+      </ui:ForEach.Values>
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Process Participant" sap2010:WorkflowViewState.IdRef="Sequence_Participant">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="participantName" />
+              <Variable x:TypeArguments="x:String" Name="participantEmail" />
+              <Variable x:TypeArguments="x:String" Name="outputPath" />
+            </Sequence.Variables>
+            <Assign DisplayName="Get Name" sap2010:WorkflowViewState.IdRef="Assign_Name">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String">participantName</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String">row["Name"].ToString()</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Get Email" sap2010:WorkflowViewState.IdRef="Assign_Email">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String">participantEmail</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String">row["Email"].ToString()</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Progress" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Progress">
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <CSharpValue x:TypeArguments="x:Object">"Processing " + (progressIndex + 1) + " of " + participantsTable.Rows.Count + " participants"</CSharpValue>
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
+            <Assign DisplayName="Increment Progress" sap2010:WorkflowViewState.IdRef="Assign_IncrementProgress">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">
+                  <CSharpReference x:TypeArguments="x:Int32">progressIndex</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32">progressIndex + 1</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <If sap2010:WorkflowViewState.IdRef="If_SkipEmpty">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean">string.IsNullOrWhiteSpace(participantName) || string.IsNullOrWhiteSpace(participantEmail)</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <If.Then>
+                <Sequence DisplayName="Skip Empty Row" sap2010:WorkflowViewState.IdRef="Sequence_Skip">
+                  <ui:LogMessage DisplayName="Log Skip" Level="Warn" sap2010:WorkflowViewState.IdRef="LogMessage_Skip">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object">"Skipping empty row"</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else Branch" sap2010:WorkflowViewState.IdRef="Sequence_Else">
+                <Assign DisplayName="Set Output Path" sap2010:WorkflowViewState.IdRef="Assign_OutputPath">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">
+                      <CSharpReference x:TypeArguments="x:String">outputPath</CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <CSharpValue x:TypeArguments="x:String">System.IO.Path.Combine(outputFolder, participantName + "_" + participantEmail + (isPdf ? ".pdf" : ".png"))</CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If sap2010:WorkflowViewState.IdRef="If_Duplicate">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <CSharpValue x:TypeArguments="x:Boolean">System.IO.File.Exists(outputPath)</CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <If.Then>
+                    <Sequence DisplayName="Skip Duplicate" sap2010:WorkflowViewState.IdRef="Sequence_SkipDup">
+                      <ui:LogMessage DisplayName="Log Duplicate" Level="Warn" sap2010:WorkflowViewState.IdRef="LogMessage_Dup">
+                        <ui:LogMessage.Message>
+                          <InArgument x:TypeArguments="x:Object">
+                            <CSharpValue x:TypeArguments="x:Object">"Skipping duplicate: certificate already exists for " + participantName</CSharpValue>
+                          </InArgument>
+                        </ui:LogMessage.Message>
+                      </ui:LogMessage>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Generate Certificate" sap2010:WorkflowViewState.IdRef="Sequence_GenerateCert">
+            <TryCatch DisplayName="Try Generate Certificate" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <Sequence DisplayName="Generate" sap2010:WorkflowViewState.IdRef="Sequence_Generate">
+                  <ui:InvokeCode Language="CSharp" DisplayName="Draw Name on Certificate" sap2010:WorkflowViewState.IdRef="InvokeCode_Draw">
+                    <ui:InvokeCode.Code>
+                      <x:String xml:space="preserve">string tp = templatePathVar;
+string nm = nameVar;
+string op = outputPathVar;
+int xv = int.Parse(xStr);
+int yv = int.Parse(yStr);
+int fs = int.Parse(fontStr);
+string col = colorStr.Trim().ToLower();
+string ff = fontFamilyVar.Trim();
+int cn = certNumberVar;
+bool pdf = isPdfVar;
+System.Drawing.Brush textBrush;
+if (col == "white") textBrush = System.Drawing.Brushes.White;
+else if (col == "red") textBrush = System.Drawing.Brushes.Red;
+else if (col == "blue") textBrush = System.Drawing.Brushes.Blue;
+else if (col == "gold") textBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gold);
+else if (col == "green") textBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
+else if (col == "purple") textBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Purple);
+else if (col == "orange") textBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
+else textBrush = System.Drawing.Brushes.Black;
+using (System.Drawing.Image img = System.Drawing.Image.FromFile(tp))
+{
+    using (System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(img))
+    {
+        using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp))
+        {
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            using (System.Drawing.Font font = new System.Drawing.Font(ff, fs, System.Drawing.FontStyle.Bold))
+            {
+                System.Drawing.SizeF ts = g.MeasureString(nm, font);
+                float dx = xv;
+                float dy = yv;
+                g.DrawString(nm, font, textBrush, dx, dy);
+            }
+            using (System.Drawing.Font numFont = new System.Drawing.Font(ff, 14, System.Drawing.FontStyle.Regular))
+            {
+                string certNum = "Cert #" + cn.ToString("D3") + " - " + System.DateTime.Now.ToString("MMM yyyy");
+                System.Drawing.SizeF numSize = g.MeasureString(certNum, numFont);
+                float numX = bmp.Width - numSize.Width - 20;
+                float numY = bmp.Height - numSize.Height - 20;
+                g.DrawString(certNum, numFont, textBrush, numX, numY);
+            }
+        }
+        if (pdf)
+        {
+            string pngPath = System.IO.Path.ChangeExtension(op, ".png");
+            bmp.Save(pngPath, System.Drawing.Imaging.ImageFormat.Png);
+            try
+            {
+                using (System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument())
+                {
+                    pd.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                    pd.PrinterSettings.PrintToFile = true;
+                    pd.PrinterSettings.PrintFileName = op;
+                    pd.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Custom", bmp.Width, bmp.Height);
+                    pd.DefaultPageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
+                    pd.PrintPage += (sender, e) =&gt; {
+                        e.Graphics.DrawImage(bmp, 0, 0);
+                        e.HasMorePages = false;
+                    };
+                    pd.Print();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine("PDF conversion failed: " + ex.Message);
+            }
+        }
+        else
+        {
+            bmp.Save(op, System.Drawing.Imaging.ImageFormat.Png);
+        }
+    }
+}</x:String>
+                    </ui:InvokeCode.Code>
+                    <ui:InvokeCode.Arguments>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument">
+                        <InArgument x:TypeArguments="x:String" x:Key="templatePathVar">
+                          <CSharpValue x:TypeArguments="x:String">templatePath</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="nameVar">
+                          <CSharpValue x:TypeArguments="x:String">participantName</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="outputPathVar">
+                          <CSharpValue x:TypeArguments="x:String">outputPath</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="xStr">
+                          <CSharpValue x:TypeArguments="x:String">posXStr</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="yStr">
+                          <CSharpValue x:TypeArguments="x:String">posYStr</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="fontStr">
+                          <CSharpValue x:TypeArguments="x:String">fontSizeStr</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="colorStr">
+                          <CSharpValue x:TypeArguments="x:String">fontColorStr</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="fontFamilyVar">
+                          <CSharpValue x:TypeArguments="x:String">fontFamily</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="certNumberVar">
+                          <CSharpValue x:TypeArguments="x:Int32">certCounter</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="isPdfVar">
+                          <CSharpValue x:TypeArguments="x:Boolean">isPdf</CSharpValue>
+                        </InArgument>
+                      </scg:Dictionary>
+                    </ui:InvokeCode.Arguments>
+                  </ui:InvokeCode>
+                  <ui:LogMessage DisplayName="Log Success" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Success">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object">"Generated certificate for: " + participantName</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                  <If sap2010:WorkflowViewState.IdRef="If_SendEmail">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean">sendViaEmail</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <If.Then>
+                      <Sequence DisplayName="Send Email" sap2010:WorkflowViewState.IdRef="Sequence_SendEmail">
+                        <ui:InvokeCode Language="CSharp" DisplayName="Send Certificate via Gmail" sap2010:WorkflowViewState.IdRef="InvokeCode_SendEmail">
+                          <ui:InvokeCode.Code>
+                            <x:String xml:space="preserve">string from = senderVar;
+string to = receiverVar;
+string sub = subjectVar;
+string body = bodyVar;
+string attach = attachVar;
+string pass = passVar;
+System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage(from, to, sub, body);
+msg.Attachments.Add(new System.Net.Mail.Attachment(attach));
+System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+client.EnableSsl = true;
+client.Credentials = new System.Net.NetworkCredential(from, pass);
+client.Send(msg);
+client.Dispose();
+msg.Dispose();</x:String>
+                          </ui:InvokeCode.Code>
+                          <ui:InvokeCode.Arguments>
+                            <scg:Dictionary x:TypeArguments="x:String, Argument">
+                              <InArgument x:TypeArguments="x:String" x:Key="senderVar">
+                                <CSharpValue x:TypeArguments="x:String">senderEmail</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="receiverVar">
+                                <CSharpValue x:TypeArguments="x:String">participantEmail</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="subjectVar">
+                                <CSharpValue x:TypeArguments="x:String">emailSubject</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="bodyVar">
+                                <CSharpValue x:TypeArguments="x:String">emailBody</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="attachVar">
+                                <CSharpValue x:TypeArguments="x:String">outputPath</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="passVar">
+                                <CSharpValue x:TypeArguments="x:String">senderPassword</CSharpValue>
+                              </InArgument>
+                            </scg:Dictionary>
+                          </ui:InvokeCode.Arguments>
+                        </ui:InvokeCode>
+                        <ui:LogMessage DisplayName="Log Email Sent" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Email">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <CSharpValue x:TypeArguments="x:Object">"Certificate emailed to: " + participantEmail</CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Skip Email" sap2010:WorkflowViewState.IdRef="Sequence_SkipEmail">
+                        <ui:LogMessage DisplayName="Log Saved Locally" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Saved">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <CSharpValue x:TypeArguments="x:Object">"Certificate saved locally for: " + participantName + " at " + outputPath</CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1">
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Handle Error" sap2010:WorkflowViewState.IdRef="Sequence_Error">
+                      <ui:LogMessage DisplayName="Log Error" Level="Error" sap2010:WorkflowViewState.IdRef="LogMessage_Error">
+                        <ui:LogMessage.Message>
+                          <InArgument x:TypeArguments="x:Object">
+                            <CSharpValue x:TypeArguments="x:Object">"Failed for " + participantName + ": " + ex.Message</CSharpValue>
+                          </InArgument>
+                        </ui:LogMessage.Message>
+                      </ui:LogMessage>
+                    </Sequence>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <Assign DisplayName="Increment Cert Counter" sap2010:WorkflowViewState.IdRef="Assign_IncrementCert">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">
+                  <CSharpReference x:TypeArguments="x:Int32">certCounter</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32">certCounter + 1</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          </If.Else>
+          </If>
+          </Sequence>
+          </If.Else>
+          </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Done" Level="Info" sap2010:WorkflowViewState.IdRef="LogMessage_Done">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object">"All certificates generated successfully!"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
