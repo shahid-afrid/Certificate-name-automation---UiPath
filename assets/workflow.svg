@@ -12,10 +12,12 @@
   <rect width="1200" height="280" rx="24" fill="url(#bg)"/>
   <circle cx="1120" cy="30" r="160" fill="#ff6b35" opacity=".08"/><circle cx="90" cy="275" r="125" fill="#7dd3fc" opacity=".08"/>
   <g font-family="Segoe UI, Arial, sans-serif" text-anchor="middle" filter="url(#shadow)">
-    <path d="M240 140 H325 M525 140 H610 M810 140 H885" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <path d="M240 140 H325" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <path d="M525 140 H610" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <path d="M810 140 H885" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
     <g transform="translate(50 76)"><rect width="190" height="128" rx="18" fill="#fff"/><text x="95" y="47" fill="#ff5b2d" font-size="28" font-weight="700">Excel / CSV</text><text x="95" y="78" fill="#344054" font-size="17">Names + emails</text><text x="95" y="104" fill="#667085" font-size="14">Participant list</text></g>
     <g transform="translate(325 76)"><rect width="200" height="128" rx="18" fill="#fff"/><text x="100" y="47" fill="#ff5b2d" font-size="28" font-weight="700">UiPath</text><text x="100" y="78" fill="#344054" font-size="17">Main.xaml</text><text x="100" y="104" fill="#667085" font-size="14">Reads and validates</text></g>
-    <g transform="translate(610 76)"><rect width="200" height="128" rx="18" fill="#fff"/><text x="100" y="47" fill="#ff5b2d" font-size="27" font-weight="700">System.Drawing</text><text x="100" y="78" fill="#344054" font-size="17">Name rendering</text><text x="100" y="104" fill="#667085" font-size="14">PNG or PDF output</text></g>
+    <g transform="translate(610 76)"><rect width="200" height="128" rx="18" fill="#fff"/><text x="100" y="47" fill="#ff5b2d" font-size="23" font-weight="700">System.Drawing</text><text x="100" y="78" fill="#344054" font-size="17">Name rendering</text><text x="100" y="104" fill="#667085" font-size="14">PNG or PDF output</text></g>
     <g transform="translate(885 46)"><rect width="260" height="188" rx="18" fill="#fff"/><text x="130" y="43" fill="#ff5b2d" font-size="25" font-weight="700">Delivery</text><rect x="23" y="62" width="214" height="44" rx="10" fill="#fff3ed"/><text x="130" y="90" fill="#9a3412" font-size="17" font-weight="600">Save locally</text><rect x="23" y="119" width="214" height="44" rx="10" fill="#fff3ed"/><text x="130" y="147" fill="#9a3412" font-size="17" font-weight="600">Email with Gmail</text></g>
   </g>
 </svg>
