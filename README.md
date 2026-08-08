@@ -20,7 +20,7 @@
 This attended UiPath automation takes a participant list, prints each participant's name onto a certificate template, and creates a separate certificate for every person.
 
 <div align="center">
-  <img src="assets/workflow.svg?v=2" alt="Certificate automation workflow" width="100%" />
+  <img src="assets/certificate-flow.svg" alt="Certificate automation workflow" width="100%" />
 </div>
 
 ## Key features
@@ -159,7 +159,7 @@ flowchart LR
 ```text
 Certificate-name-automation---UiPath/
 ├── assets/
-│   └── workflow.svg        # Visual workflow graphic
+│   └── certificate-flow.svg # Visual workflow graphic
 ├── Main.xaml               # Main UiPath workflow
 ├── project.json            # Project settings and dependencies
 └── README.md               # Documentation
